@@ -69,6 +69,8 @@ public class Controller {
 				} else {
 					System.out.println(); 
 				}
+			} else if (option == 4) {
+				runProgram = false; 
 			}
 		}
 	}
