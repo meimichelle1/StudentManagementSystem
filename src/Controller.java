@@ -247,7 +247,7 @@ public class Controller {
 		
 		while (run) {
 			System.out.println("--------------------------"); 
-			System.out.println("  Welcom, " + student.getName());
+			System.out.println("  Welcome, " + student.getName());
 			System.out.println("--------------------------"); 
 			System.out.println("1 -- View all courses"); 
 			System.out.println("2 -- Add courses to your list"); 
@@ -318,7 +318,7 @@ public class Controller {
 		
 		while (run) {
 			System.out.println("--------------------------"); 
-			System.out.println("  Welcom, " + professor.getName());
+			System.out.println("  Welcome, " + professor.getName());
 			System.out.println("--------------------------"); 
 			System.out.println("1 -- View given courses"); 
 			System.out.println("2 -- View student list of the given course"); 
@@ -364,7 +364,7 @@ public class Controller {
 		Course newAdd = null; 
 		while (run) {
 			System.out.println("--------------------------"); 
-			System.out.println("  Welcom, " + admin.getName());
+			System.out.println("  Welcome, " + admin.getName());
 			System.out.println("--------------------------"); 
 			System.out.println("1 -- View all courses"); 
 			System.out.println("2 -- Add new courses"); 
