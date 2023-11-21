@@ -2,21 +2,26 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Test
-    public void testReadStudentInfo() {
-      String fileName = "studentInfo.txt"; 
-      try {
-          StudentInfoReader.readStudentInfo(fileName); // Assuming the method is in a class named StudentInfoReader
-      } catch (IOException e) {
-          fail("Exception thrown: " + e.getMessage());
-      }
+public class readStudentInfoTest {
 
-      // Check if the student list has been populated
-      assertFalse(studentList.isEmpty());
+    @Test
+    public void testReadStudentInfo() {
+        String fileName = "studentInfo.txt"; 
+        try {
+            FileInfoReader.readStudentInfo(fileName); 
+        } catch (IOException e) {
+            fail("Exception thrown: " + e.getMessage());
+        }
+
+        // Check if the student list has been populated
+        assertFalse(studentInfo.isEmpty());
         
-      // Check if "StudentName2" exists in the studentList
+        // Ensure two students were added
+        assertEquals(2, studentInfo.size());
+
+        // Check if "StudentName2" exists in the studentList
         boolean studentName2Exists = false;
-        for (Student student : studentList) {
+        for (Student student : studentInfo) {
             if (student.getName().equals("StudentName2")) {
                 studentName2Exists = true;
                 break;
@@ -25,5 +30,5 @@ import static org.junit.jupiter.api.Assertions.*;
 
         assertTrue(studentName2Exists, "Student 'StudentName2' does exist in the list.");
     }
-  }
+}
 
