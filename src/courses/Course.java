@@ -5,7 +5,16 @@ import java.util.ArrayList;
 import roles.Professor;
 import roles.Student;
 
+/**
+ * Represents a Course with specific attributes.
+ * 
+ * @author Michelle Chen
+ * @author Evelyn Li
+ * @author Gloria Chen
+ */
 public class Course {
+
+// Attributes defining a Course
 
 	private String course; 
 	
@@ -27,23 +36,38 @@ public class Course {
 	
 	private int courseStudent; 
 	
-	private ArrayList<Student> studentInCourse = new ArrayList<Student>(); 
+	private ArrayList<Student> studentInCourse = new ArrayList<Student>(); // List of students enrolled in the course
 	
-	
+     /**
+     * Constructor to initialize a Course object with a course identifier.
+     * @param course Unique course identifier
+     */
 	public Course(String course) {
 		this.course = course; 
 		
 		courseStudent = 0; 
 	}
-	
+    /**
+     * Sets the name of the course.
+     * @param courseName Name of the course to be set
+     */
 	public void setCourseName(String courseName) {
 		this.courseName = courseName; 
 	}
-	
+	/**
+     * Sets the lecturer for the course.
+     * @param lecturer Name of the lecturer to be set
+     */
 	public void setLecturer(String lecturer) {
 		this.lecturer = lecturer; 
 	}
-	
+
+	/**
+     * Checks if the course is in the professor's list and avoids schedule conflicts.
+     * @param prof   Professor to check against
+     * @param course Course to be checked
+     * @return True if the course can be added, false otherwise
+     */
 	public boolean checkIfCourseInProfListAndConflict(Professor prof, Course course) {
 
 		ArrayList<Course> lectureList = prof.getLectureList(); 
@@ -65,16 +89,28 @@ public class Course {
 		lectureList.add(course); 
 		return true;
 	}
-	
+
+	/**
+     * Sets the start time for the course.
+     * @param courseStart Start time of the course to be set
+     */
 	public void setCourseStart(String courseStart) {
 		this.courseStart = courseStart; 
 	}
-	
+	/**
+     * Sets the end time of the course.
+     * @param courseEnd The end time to be set for the course
+     */
 	public void setCourseEnd(String courseEnd) {
 
 		this.courseEnd = courseEnd; 
 	}
-	
+
+	/**
+     * Validates the format and range of the start time for the course.
+     * @param courseStart Start time to be validated in HH:MM format
+     * @return True if the start time is valid, false otherwise
+     */
 	public boolean validateStartTime(String courseStart) {
 		if (courseStart.contains(":")) {
 			String[] starts = courseStart.split(":");
@@ -107,6 +143,11 @@ public class Course {
 		return false; 
 	}
 	
+    /**
+     * Validates the provided end time for the course.
+     * @param courseEnd The end time to be validated
+     * @return boolean indicating whether the end time is valid 
+     */
 	public boolean validateEndTime(String courseEnd) {
 		if (courseEnd.contains(":")) {
 			String[] ends = courseEnd.split(":");
@@ -141,11 +182,19 @@ public class Course {
 		}
 		return false; 
 	}
-	
+	/**
+     * Sets the lecture date for the course.
+     * @param lectureDate The date of the lecture to be set
+     */
 	public void setLectureDate(String lectureDate) {
 		this.lectureDate = lectureDate; 
 	}
-	
+
+	/**
+     * Validates the provided lecture dates.
+     * @param dates The dates to be validated
+     * @return boolean indicating whether the dates are valid or not
+     */
 	public boolean validateLectureDate(String dates) {
 		String orderedDates = "MTWRF"; 
 		if (dates.length() <= 5) {
@@ -157,7 +206,7 @@ public class Course {
 					System.out.println("At least one of the entered date is invalid");
 					return false; 
 				} else {
-					sortDates.add(upperD.charAt(i)); 
+					sortDates.add(upperD.charAt(i)); // Add valid dates to the list
 				}
 			}
 			// Sort based on the index in orderedDates
@@ -175,10 +224,19 @@ public class Course {
 		return false; 
 	}
 	
+    /**
+     * Sets the capacity of the course.
+     * @param capacity The capacity of the course to be set
+     */
 	public void setCourseCapacity(int capacity) {
 		this.courseCapacity = capacity; 
 	}
 	
+    /**
+     * Validates provided capacity number.
+     * @param number The number to be validated as capacity
+     * @return boolean indicating whether the capacity is valid or not
+     */
 	public boolean validateCapacity(String number) {
 		try {
 			int cap = Integer.parseInt(number); 
@@ -194,52 +252,103 @@ public class Course {
 		}
 		return false; 
 	}
-	
+
+	/**
+     * Increases the count of students in the course by 1.
+     */
 	public void setCourseStudent() {
 		this.courseStudent++; 
 	}
 	
-	public void deductCourseStudent() {
-		this.courseStudent--; 
-	}
-	
+    /**
+     * Decreases the count of students in the course by 1 if students are present.
+     * Ensures the count doesn't go below zero.
+     */
+    public void deductCourseStudent() {
+    if (this.courseStudent > 0) {
+        this.courseStudent--; // Deduct only if students are present
+    } else {
+        this.courseStudent = 0; 
+    }
+}
+
+    /**
+     * Returns the course code.
+     * @return The course code
+     */
 	public String getCourse() {
 		return this.course; 
 	}
 	
+    /**
+     * Returns the course name.
+     * @return The course name
+     */
 	public String getCourseName() {
 		return this.courseName; 
 	}
 	
+    /**
+     * Returns the start time of the course.
+     * @return The start time of the course
+     */
 	public String getCourseStart() {
 		return this.courseStart; 
 	}
-	
+
+	/**
+     * Returns the end time of the course.
+     * @return The end time of the course
+     */
 	public String getCourseEnd()
 	{	
 		return this.courseEnd; 
 	}
 	
+    /**
+     * Returns the lecturer of the course.
+     * @return The lecturer of the course
+     */
 	public String getLecturer() {
 		return this.lecturer; 
 	}
 	
+    /**
+     * Returns the count of students in the course.
+     * @return The count of students in the course
+     */
 	public int getCourseStudent() {
 		return this.courseStudent; 
 	}
 	
+    /**
+     * Returns the capacity of the course.
+     * @return The capacity of the course
+     */
 	public int getCourseCapacity() {
 		return this.courseCapacity; 
 	}
 	
+    /**
+     * Returns the list of students enrolled in the course.
+     * @return The list of students enrolled in the course
+     */
 	public ArrayList<Student> getStudentInCourseList(){
 		return this.studentInCourse; 
 	}
 	
+    /**
+     * Creates a formatted string representation of the course details.
+     * @return A formatted string representation of the course
+     */
 	public String toPrint() {
 		return course + "|" + courseName + ", " + courseStart+ "-" + courseEnd + " on " + lectureDate + ", with course capacity: " + courseCapacity + ", students: " + courseStudent + ", lecturer: " + lecturer; 
 	}
 	
+    /**
+     * Prints all courses from the provided list of courses.
+     * @param courses The list of courses to be printed
+     */
 	public void printAllCourses(ArrayList<String> courses){
 		for (String course : courses) {
 			System.out.println(course); 
