@@ -795,6 +795,7 @@ public class Controller {
 					} else {
 						// add professor if he/she doesn't already exist
 						anotherNew = new Professor(Integer.parseInt(input)); 
+						professorList.add(anotherNew); 
 						break; 
 					}
 				}
@@ -978,6 +979,7 @@ public class Controller {
 					} else {
 						// add student if it does not already exists 
 						newStudent = new Student(Integer.parseInt(input)); 
+						studentList.add(newStudent); 
 						break; 
 					}
 				} else {
